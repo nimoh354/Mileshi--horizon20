@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Folio | Mileshi</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+<nav>
+    <a href="dashboard.html">Return to Portal</a>
+</nav>
+<section class="page">
+    <h2 style="color:var(--gold)">YOUR SETTLEMENT FOLIO</h2>
+    <div id="folio-list" style="margin-top:20px; border-top:1px solid #222;"></div>
+    <div style="text-align:right; margin-top:30px;">
+        <h3 id="folio-total" style="margin-bottom:10px;">TOTAL: KSH 0</h3>
+        <button class="btn" style="width:250px; border-color:var(--success); color:var(--success)" onclick="alert('Generating Secure Receipt...')">DOWNLOAD INVOICE</button>
+    </div>
+</section>
+<script src="script.js"></script>
+</body>
+</html>

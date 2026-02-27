@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><title>Command | Mileshi</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<nav>
+    <div class="logo-container" onclick="location.href='dashboard.html'">
+        <span class="status-dot"></span><span class="logo-text">Command Center</span>
+    </div>
+    <div class="nav-links"><a href="dashboard.html">Back</a><a href="index.html" style="color:var(--danger)">Logout</a></div>
+</nav>
+<section class="page">
+    <h2 style="color:var(--gold); margin-bottom:20px;">SYSTEM OVERRIDE</h2>
+    <div class="grid">
+        <div class="card" style="padding:20px;">
+            <h4 style="color:var(--gold)">SECURITY TOOLS</h4>
+            <button class="btn" onclick="resetPin()">RESET GUEST PIN</button>
+            <button class="btn" style="border-color:#444; color:#666" onclick="softReset()">SOFT RESET CACHE</button>
+            <button class="btn" style="border-color:var(--danger); color:var(--danger)" onclick="if(confirm('Wipe All?')){localStorage.clear(); location.reload();}">HARD FACTORY RESET</button>
+        </div>
+        <div class="card" style="padding:20px;">
+            <h4 style="color:var(--bio)">ACTIVE QUEUE</h4>
+            <div id="admin-q-list"></div>
+        </div>
+    </div>
+    <div style="margin-top:40px;">
+        <h4 style="color:var(--success)">AUDIT LOGS</h4>
+        <div id="admin-logs" style="background:#000; color:#0f0; padding:15px; height:180px; overflow-y:auto; font-family:monospace; border:1px solid #222; font-size:10px; margin-top:10px;"></div>
+    </div>
+</section>
+<script src="script.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        if(localStorage.getItem('mh_role') !== 'admin') window.location.href = 'index.html';
+        const q = JSON.parse(localStorage.getItem('mh_queue') || '[]');
+        document.getElementById('admin-q-list').innerHTML = q.map(t => `<div style="padding:10px; border-bottom:1px solid #222;"><b>${t.guest}</b>: ${t.item}</div>`).join('');
+        const logs = JSON.parse(localStorage.getItem('mh_logs') || '[]');
+        document.getElementById('admin-logs').innerHTML = logs.reverse().map(l => `<div>> ${l}</div>`).join('');
+    });
+</script>
+</body>
+</html>

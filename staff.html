@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Staff Hub</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<nav><a href="dashboard.html">Back</a></nav>
+<section class="page">
+    <h2 style="color:var(--bio)">ACTIVE DISPATCHES</h2>
+    <div id="staff-queue-list" style="margin-top:20px;"></div>
+</section>
+<script src="script.js"></script>
+<script>
+    window.addEventListener('load', () => { 
+        const q = JSON.parse(localStorage.getItem('mh_queue') || '[]');
+        $('staff-queue-list').innerHTML = q.map(t => `
+            <div style="padding:15px; border:1px solid #222; background:#111; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                <span><b>${t.guest}</b> requested ${t.item}</span>
+                <button class="btn" style="width:100px; margin:0;" onclick="clearTask(${t.id})">RESOLVE</button>
+            </div>`).join('');
+    });
+    function clearTask(id) {
+        let q = JSON.parse(localStorage.getItem('mh_queue') || '[]');
+        localStorage.setItem('mh_queue', JSON.stringify(q.filter(x => x.id !== id)));
+        location.reload();
+    }
+</script>
+</body>
+</html>

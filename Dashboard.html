@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<nav>
+    <div style="display:flex; align-items:center;">
+        <span class="status-dot"></span>
+        <span style="color:var(--gold); letter-spacing:2px;">MILESHI HORIZON</span>
+    </div>
+    <div class="nav-links">
+        <a href="suites.html">Suites</a>
+        <a href="dining.html">Dining</a>
+        <a href="folio.html">Folio <span id="cart-count"></span></a>
+        <a href="staff.html" id="staff-link">Staff</a>
+        <a href="admin.html" id="admin-link">Admin</a>
+        <a href="index.html" style="color:var(--danger)">Logout</a>
+    </div>
+</nav>
+<section class="page">
+    <h1 style="font-size:40px; letter-spacing:15px;">WELCOME, <span id="user-name" style="color:var(--gold)"></span></h1>
+    <p style="color:#444; margin-top:10px;">SOVEREIGN ACCESS GRANTED. EXPLORE THE HORIZON.</p>
+</section>
+<script src="script.js"></script>
+<script>
+    // Hide administrative links if not authorized
+    if(currentRole !== 'admin') $('admin-link').style.display = 'none';
+    if(currentRole !== 'staff' && currentRole !== 'admin') $('staff-link').style.display = 'none';
+</script>
+</body>
+</html>

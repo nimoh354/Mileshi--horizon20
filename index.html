@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Gate | Mileshi</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<div id="gate">
+    <h1 style="color:var(--gold); letter-spacing:10px;">MILESHI HORIZON</h1>
+    <div id="auth-roles">
+        <button class="role-card" onclick="setRole('create')">ENROLL</button>
+        <button class="role-card" onclick="setRole('guest')">GUEST</button>
+        <button class="role-card" onclick="setRole('staff')">STAFF</button>
+        <button class="role-card" onclick="setRole('admin')">ADMIN</button>
+    </div>
+    <div id="login-form" style="display:none; width:280px;">
+        <h3 id="role-tag" style="color:var(--bio); margin-bottom:10px;"></h3>
+        <input id="uid" placeholder="ID NAME">
+        <input id="upin" type="password" placeholder="PIN">
+        <button class="btn" onclick="startBio()">SCAN BIOMETRICS</button>
+    </div>
+    <div id="bio-scanner" style="display:none; width:220px; text-align:center;">
+        <div style="height:120px; border:1px solid #222; position:relative; overflow:hidden;"><div class="scan-bar"></div></div>
+        <p style="margin-top:10px; color:var(--bio);">VERIFYING IDENTITY...</p>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
